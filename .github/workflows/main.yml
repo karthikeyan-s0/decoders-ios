@@ -1,0 +1,23 @@
+name: Build iOS App
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Build App
+        run: |
+          mkdir build
+          echo "Dummy iOS Build" > build/app.txt
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: IOS_App
+          path: build
